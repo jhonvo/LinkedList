@@ -11,4 +11,3 @@ listOfNumbers.insertLast( 50 )
 listOfNumbers.insertLast( 80 )
 
 listOfNumbers.printList()
-
