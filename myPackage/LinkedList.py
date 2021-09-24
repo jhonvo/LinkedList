@@ -33,8 +33,10 @@ class LinkedList:
         current = self.head
         while current != None:
             if current.val == val:
+                print(f'Found the {val} (◠ ‿ ◠)')
                 return current
             current = current.next
+        print(f'{val} Was not found')
         return None
 
     def deleteNode( self, val ):
@@ -53,7 +55,80 @@ class LinkedList:
                 previous.next = current.next
                 current.next = None
 
+    def printnextnext (self):
+        current = self.head
+        print (current.next.val)
+
     def insertAtPosition( self, index, val ):
-        pass
+        newNode = Node( val )
+        if self.head == None:
+            self.head = newNode
+        else:
+            current = self.head
+            if current.val == index:
+                    newNode.next = current
+                    self.head = newNode
+            else:
+                while current.next != None:
+                    if current.next.val == index:
+                        newNode.next = current.next
+                        current.next = newNode
+                        return None
+                    else:
+                        current = current.next
+            print(f'Insert {index} Was not found')
+
+    def lenght (self):
+        current = self.head
+        count = 0
+        while current != None:
+            count += 1
+            current = current.next
+        return count
+
+    def insertAtIndex(self, index, val):
+        newNode = Node( val )
+        # if self.head == None and index == 0: // Not Needed
+        #     self.head = newNode // Not Needed
+        # elif self.head == None and index != 0: // Not Needed 
+        #     return None // Not Needed
+        if index <= self.lenght():
+            if index == 0:
+                self.insertFirst(val)
+            else:
+                indexcount = 0
+                current = self.head
+                while indexcount < index-1:
+                    indexcount += 1
+                    current = current.next
+                newNode.next = current.next
+                current.next = newNode
+        else:
+            print (f'It is not possible to use that index')
+                
+
+
 
     
+    # def insertAtIndex(self, index, val):
+    #     newNode = Node( val )
+    #     count = 0
+    #     current = self.head
+    #     while current != None:
+    #         count += 1
+    #         current = current.next
+    #     if count == 0:
+    #         print (f'The list is empty')
+    #     elif count < index + 1:
+    #         print (f'The index does not exist')
+    #     elif index == 0:
+    #         newNode.next = self.head
+    #         self.head = newNode
+    #     else:
+    #         indexcheck = 0
+    #         while indexcheck < index-1:
+    #             current = current.next
+    #             indexcheck += 1
+    #         newNode.next = current.next
+    #         current.next = newNode
+    #         return None
